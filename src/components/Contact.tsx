@@ -1,42 +1,48 @@
 import { useState } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
-import { 
-  MessageCircle, 
-  Send, 
-  Mail, 
+import {
+  MessageCircle,
+  Send,
+  Mail,
   Phone,
   Clock,
   CreditCard,
   Banknote,
   CheckCircle,
   FileText,
-  Calculator
+  Calculator,
 } from "lucide-react";
 
 const Contact = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    projectType: '',
-    message: ''
+    name: "",
+    email: "",
+    phone: "",
+    projectType: "",
+    message: "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Basic validation
     if (!formData.name || !formData.email || !formData.message) {
       toast({
         title: "Eksik Bilgi",
         description: "Lütfen tüm zorunlu alanları doldurun.",
-        variant: "destructive"
+        variant: "destructive",
       });
       return;
     }
@@ -52,8 +58,10 @@ Proje Türü: ${formData.projectType}
 Proje Detayları:
 ${formData.message}`;
 
-    const whatsappUrl = `https://wa.me/905321234567?text=${encodeURIComponent(whatsappMessage)}`;
-    window.open(whatsappUrl, '_blank');
+    const whatsappUrl = `https://wa.me/905014867006?text=${encodeURIComponent(
+      whatsappMessage
+    )}`;
+    window.open(whatsappUrl, "_blank");
 
     toast({
       title: "Yönlendiriliyor",
@@ -62,17 +70,19 @@ ${formData.message}`;
 
     // Reset form
     setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      projectType: '',
-      message: ''
+      name: "",
+      email: "",
+      phone: "",
+      projectType: "",
+      message: "",
     });
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const contactMethods = [
@@ -80,43 +90,44 @@ ${formData.message}`;
       icon: MessageCircle,
       title: "WhatsApp",
       description: "Hızlı iletişim için",
-      value: "+90 532 123 45 67",
-      action: () => window.open('https://wa.me/905321234567', '_blank'),
-      primary: true
+      value: "+90 501 486 70 06",
+      action: () => window.open("https://wa.me/905014867006", "_blank"),
+      primary: true,
     },
     {
       icon: Phone,
       title: "Telefon",
       description: "Direkt arama yapın",
-      value: "+90 532 123 45 67",
-      action: () => window.location.href = 'tel:+905321234567',
-      primary: false
+      value: "+90 501 486 70 06",
+      action: () => (window.location.href = "tel:+905014867006"),
+      primary: false,
     },
     {
       icon: Send,
       title: "Telegram",
       description: "Güvenli mesajlaşma",
       value: "@spssanaliz",
-      action: () => window.open('https://t.me/spssanaliz', '_blank'),
-      primary: false
+      action: () => window.open("https://t.me/spssanaliz", "_blank"),
+      primary: false,
     },
     {
       icon: Mail,
       title: "E-posta",
       description: "Detaylı bilgi için",
-      value: "info@spssanaliz.com",
-      action: () => window.location.href = 'mailto:info@spssanaliz.com',
-      primary: false
-    }
+      value: "metrik.istatistik@gmail.com",
+      action: () =>
+        (window.location.href = "mailto:metrik.istatistik@gmail.com"),
+      primary: false,
+    },
   ];
 
   const projectTypes = [
     "Tez Analizi",
-    "Makale Araştırması", 
+    "Makale Araştırması",
     "İşletme Analizi",
     "Sağlık Araştırması",
     "Eğitim Çalışması",
-    "Diğer"
+    "Diğer",
   ];
 
   const priceFeatures = [
@@ -124,7 +135,7 @@ ${formData.message}`;
     "Nakit ödeme kabul edilir",
     "Havale/EFT ile ödeme imkanı",
     "Proje teslimi sonrası ödeme seçeneği",
-    "Öğrenci indirimi mevcut"
+    "Öğrenci indirimi mevcut",
   ];
 
   return (
@@ -136,7 +147,8 @@ ${formData.message}`;
             İletişime Geçin
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            SPSS analizi projeniz için hemen iletişime geçin ve ücretsiz ön değerlendirme alın
+            SPSS analizi projeniz için hemen iletişime geçin ve ücretsiz ön
+            değerlendirme alın
           </p>
         </div>
 
@@ -201,12 +213,19 @@ ${formData.message}`;
                       <select
                         name="projectType"
                         value={formData.projectType}
-                        onChange={(e) => setFormData(prev => ({ ...prev, projectType: e.target.value }))}
+                        onChange={(e) =>
+                          setFormData((prev) => ({
+                            ...prev,
+                            projectType: e.target.value,
+                          }))
+                        }
                         className="w-full p-3 border border-input rounded-lg bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
                       >
                         <option value="">Seçiniz</option>
                         {projectTypes.map((type) => (
-                          <option key={type} value={type}>{type}</option>
+                          <option key={type} value={type}>
+                            {type}
+                          </option>
                         ))}
                       </select>
                     </div>
@@ -226,7 +245,7 @@ ${formData.message}`;
                     />
                   </div>
 
-                  <Button 
+                  <Button
                     type="submit"
                     className="w-full bg-gradient-primary text-primary-foreground hover:shadow-professional transition-professional"
                     size="lg"
@@ -254,18 +273,36 @@ ${formData.message}`;
                     key={index}
                     onClick={method.action}
                     className={`p-4 rounded-lg border cursor-pointer transition-professional hover-lift ${
-                      method.primary 
-                        ? 'bg-gradient-primary text-primary-foreground border-primary' 
-                        : 'bg-muted hover:bg-muted/80 border-border'
+                      method.primary
+                        ? "bg-gradient-primary text-primary-foreground border-primary"
+                        : "bg-muted hover:bg-muted/80 border-border"
                     }`}
                   >
                     <div className="flex items-center space-x-3">
-                      <method.icon className={`h-6 w-6 ${method.primary ? 'text-primary-foreground' : 'text-primary'}`} />
+                      <method.icon
+                        className={`h-6 w-6 ${
+                          method.primary
+                            ? "text-primary-foreground"
+                            : "text-primary"
+                        }`}
+                      />
                       <div className="flex-1">
-                        <h4 className={`font-semibold ${method.primary ? 'text-primary-foreground' : 'text-foreground'}`}>
+                        <h4
+                          className={`font-semibold ${
+                            method.primary
+                              ? "text-primary-foreground"
+                              : "text-foreground"
+                          }`}
+                        >
                           {method.title}
                         </h4>
-                        <p className={`text-sm ${method.primary ? 'text-primary-foreground/80' : 'text-muted-foreground'}`}>
+                        <p
+                          className={`text-sm ${
+                            method.primary
+                              ? "text-primary-foreground/80"
+                              : "text-muted-foreground"
+                          }`}
+                        >
                           {method.description}
                         </p>
                       </div>
@@ -286,12 +323,18 @@ ${formData.message}`;
               <CardContent>
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
-                    <span className="text-muted-foreground">Pazartesi - Cuma:</span>
-                    <span className="text-foreground font-medium">09:00 - 18:00</span>
+                    <span className="text-muted-foreground">
+                      Pazartesi - Cuma:
+                    </span>
+                    <span className="text-foreground font-medium">
+                      09:00 - 18:00
+                    </span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Cumartesi:</span>
-                    <span className="text-foreground font-medium">10:00 - 16:00</span>
+                    <span className="text-foreground font-medium">
+                      10:00 - 16:00
+                    </span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Pazar:</span>
@@ -314,7 +357,9 @@ ${formData.message}`;
                   {priceFeatures.map((feature, index) => (
                     <div key={index} className="flex items-start space-x-2">
                       <CheckCircle className="h-4 w-4 text-success mt-0.5 flex-shrink-0" />
-                      <span className="text-sm text-muted-foreground">{feature}</span>
+                      <span className="text-sm text-muted-foreground">
+                        {feature}
+                      </span>
                     </div>
                   ))}
                 </div>
