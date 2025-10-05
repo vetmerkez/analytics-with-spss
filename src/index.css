@@ -128,22 +128,28 @@ All colors MUST be HSL for consistent theming
 
 @layer base {
   * {
-    @apply border-border;
+    border-color: hsl(var(--border));
   }
 
   body {
-    @apply bg-background text-foreground;
+    color: hsl(var(--foreground));
+    background: var(--gradient-primary);
+    min-height: 100vh;
   }
 }
 
 @layer utilities {
   /* Professional Typography */
   .text-gradient-primary {
-    @apply bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent;
+    background-image: linear-gradient(to right, hsl(var(--primary)), hsl(var(--primary-glow)));
+    background-clip: text;
+    color: transparent;
   }
 
   .text-gradient-accent {
-    @apply bg-gradient-to-r from-accent to-cyan-400 bg-clip-text text-transparent;
+    background-image: linear-gradient(to right, hsl(var(--accent)), hsl(195 100% 60%));
+    background-clip: text;
+    color: transparent;
   }
 
   /* Professional Shadows */
@@ -179,11 +185,12 @@ All colors MUST be HSL for consistent theming
 
   /* Professional hover effects */
   .hover-lift {
-    @apply transition-professional;
+    transition: var(--transition-smooth);
   }
   
   .hover-lift:hover {
-    @apply -translate-y-1 shadow-professional;
+    transform: translateY(-0.25rem);
+    box-shadow: var(--shadow-lg);
   }
 
   /* Data visualization inspired animations */
@@ -193,6 +200,15 @@ All colors MUST be HSL for consistent theming
 
   .animate-scale-in {
     animation: scale-in 0.4s ease-out forwards;
+  }
+
+  /* Page transition animations */
+  .animate-slide-in-left {
+    animation: slide-in-left 0.8s ease-out forwards;
+  }
+
+  .animate-slide-in-right {
+    animation: slide-in-right 0.8s ease-out forwards;
   }
 }
 
@@ -215,5 +231,27 @@ All colors MUST be HSL for consistent theming
   100% {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+@keyframes slide-in-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-right {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
   }
 }

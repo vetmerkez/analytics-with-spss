@@ -1,163 +1,240 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { 
-  GraduationCap, 
-  Award, 
-  Clock, 
-  CheckCircle,
-  BookOpen,
+import React from 'react';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import {
+  GraduationCap,
+  Award,
   Users,
   TrendingUp,
-  Target
+  CheckCircle,
+  BookOpen,
+  Target,
+  Clock,
+  Shield,
+  Zap,
+  Heart
 } from "lucide-react";
 
 const About = () => {
   const stats = [
-    { icon: Award, number: "7+", label: "Yıllık Deneyim" },
-    { icon: Users, number: "200+", label: "Mutlu Müşteri" },
-    { icon: BookOpen, number: "500+", label: "Analiz Projesi" },
-    { icon: TrendingUp, number: "%98", label: "Başarı Oranı" }
+    { icon: Users, label: "Tamamlanan Proje", value: "700+", description: "Başarıyla tamamlanan analiz projesi" },
+    { icon: GraduationCap, label: "Akademik Çalışma", value: "150+", description: "Desteklenen tez ve makale" },
+    { icon: Award, label: "Deneyim Yılı", value: "7+", description: "İstatistiksel analiz alanında" },
+    { icon: TrendingUp, label: "Müşteri Memnuniyeti", value: "%99", description: "Yüksek kalite standartları" }
   ];
 
   const expertise = [
-    "İstatistiksel Veri Analizi",
-    "SPSS Yazılım Uzmanlığı", 
-    "Araştırma Metodolojisi",
-    "Veri Madenciliği",
-    "Hipotez Testleri",
-    "Regresyon Modelleri",
-    "Faktör Analizi",
-    "Güvenilirlik Analizi"
+    {
+      icon: BookOpen,
+      title: "Uzmanlık Alanlarım",
+      description: "İstatistiksel Veri Analizi ve Araştırma Metodolojisi",
+      details: [
+        "İstatistiksel Veri Analizi (Eğitim, Sosyal Bilimler, Biyoistatistik)",
+        "SPSS, AMOS ve R Yazılım Uzmanlığı",
+        "Araştırma Metodolojisi ve Akademik Çalışma Desteği",
+        "Veri Madenciliği ve Anket Verisi Analizi"
+      ]
+    },
+    {
+      icon: Target,
+      title: "İstatistiksel Analizler",
+      description: "Hipotez testleri ve ileri düzey analiz yöntemleri",
+      details: [
+        "Hipotez Testleri ve Karşılaştırmalı İstatistikler",
+        "Regresyon Modelleri (Doğrusal, Lojistik, Çoklu)",
+        "Faktör ve Kümeleme Analizleri",
+        "Güvenilirlik ve Geçerlilik Analizleri (Cronbach's Alpha vb.)"
+      ]
+    },
+    {
+      icon: Clock,
+      title: "Özel Analiz Alanları",
+      description: "Biyoistatistik ve eğitim araştırmaları",
+      details: [
+        "Hayatta Kalma ve Klinik Veri Analizleri (Biyoistatistik)",
+        "Eğitim Araştırmalarında Başarı Ölçümü",
+        "Çok Düzeyli Analizler",
+        "Yapısal Eşitlik Modellemesi"
+      ]
+    },
+    {
+      icon: Shield,
+      title: "Hizmet Kalitesi",
+      description: "Profesyonel ve güvenilir analiz hizmeti",
+      details: [
+        "7+ yıl deneyim",
+        "Metrik İstatistik Akademi",
+        "Hızlı ve güvenilir sonuçlar",
+        "Bilimsel standartlarda raporlama"
+      ]
+    }
   ];
 
-  const advantages = [
+  const services = [
     {
       icon: Clock,
       title: "Hızlı Teslimat",
-      description: "Projelerinizi mümkün olan en kısa sürede teslim ediyoruz"
+      description: "Projelerinizi mümkün olan en kısa sürede teslim ediyoruz",
+      features: ["Express analiz", "Öncelikli destek", "Hızlı rapor"]
     },
     {
       icon: CheckCircle,
       title: "Kaliteli Sonuçlar",
-      description: "Detaylı raporlama ve açıklamalarla profesyonel analiz"
+      description: "Detaylı raporlama ve açıklamalarla profesyonel analiz",
+      features: ["Detaylı yorumlama", "Görsel sunumlar", "Metodoloji açıklaması"]
     },
     {
       icon: Target,
       title: "Özel Çözümler",
-      description: "Her projeye özel yaklaşım ve analiz stratejisi"
+      description: "Her projeye özel yaklaşım ve analiz stratejisi",
+      features: ["Birebir görüşme", "Özel çözümler", "Sürekli destek"]
     },
     {
       icon: Users,
       title: "7/24 Destek",
-      description: "Proje süresince sürekli iletişim ve destek"
+      description: "Proje süresince sürekli iletişim ve destek",
+      features: ["Sürekli iletişim", "Hızlı yanıt", "Teknik destek"]
     }
   ];
 
+
+
   return (
-    <section id="hakkimda" className="py-20 bg-gradient-subtle">
+    <section id="hakkimizda" className="py-20 bg-background">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 animate-fade-in-up">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient-primary">
-            Hakkımda
+            Hakkımızda
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Profesyonel SPSS analizi konusunda uzman, deneyimli bir analitik uzmanı
+            7 yılı aşkın deneyimimle; eğitim, sosyal bilimler ve sağlık bilimleri (biyoistatistik) başta olmak üzere farklı disiplinlerde SPSS, AMOS ve R analiz hizmetleri sunuyoruz. Akademik geçmişim ve uygulamalı deneyimim sayesinde, karmaşık veri setlerini güvenilir ve anlamlı sonuçlara dönüştürme konusunda uzmanız.
           </p>
+          <div className="text-lg text-muted-foreground max-w-4xl mx-auto mt-6 space-y-4">
+            <p>
+              Her proje bizim için benzersizdir. Bu nedenle tez, makale ve proje çalışmalarında, araştırmanın amacına uygun özelleştirilmiş istatistiksel çözümler geliştiriyoruz.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+              <div className="text-center">
+                <div className="text-2xl mb-2">📌</div>
+                <p className="font-semibold text-foreground">Sosyal Bilimler</p>
+                <p className="text-sm">Anket analizi, tutum ve davranış ölçümleri, sosyal ağ analizi</p>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl mb-2">📌</div>
+                <p className="font-semibold text-foreground">Eğitim Alanı</p>
+                <p className="text-sm">Öğrenci başarısı, öğretim yöntemlerinin etkinliği, ölçek geliştirme</p>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl mb-2">📌</div>
+                <p className="font-semibold text-foreground">Biyoistatistik</p>
+                <p className="text-sm">Klinik veriler, epidemiyolojik çalışmalar, ilaç etkinliği, hayatta kalma analizleri</p>
+              </div>
+            </div>
+            <p className="text-center mt-6">
+              Kaliteli, hızlı ve güvenilir analiz sonuçları ile araştırmalarınızın bilimsel değerini artırmayı ve başarıya ulaşmasına katkı sağlamayı amaçlıyorum.
+            </p>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-          {/* Left Column - About Content */}
-          <div className="space-y-8">
-            {/* Main Description */}
-            <Card className="p-8 shadow-professional bg-card border-border">
-              <CardContent className="p-0">
-                <div className="flex items-center space-x-4 mb-6">
-                  <div className="p-3 bg-gradient-primary rounded-xl">
-                    <GraduationCap className="h-8 w-8 text-primary-foreground" />
+        {/* Stats Section */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+          {stats.map((stat, index) => (
+            <Card 
+              key={index}
+              className="text-center shadow-professional hover-lift transition-professional bg-card border-border animate-scale-in"
+              style={{animationDelay: `${index * 0.1}s`}}
+            >
+              <CardContent className="pt-6">
+                <div className="mx-auto mb-4 p-3 bg-gradient-primary rounded-full w-16 h-16 flex items-center justify-center">
+                  <stat.icon className="h-8 w-8 text-primary-foreground" />
+                </div>
+                <div className="text-3xl font-bold text-gradient-primary mb-2">{stat.value}</div>
+                <div className="font-semibold text-foreground mb-1">{stat.label}</div>
+                <div className="text-sm text-muted-foreground">{stat.description}</div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        {/* Expertise Section */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+          {expertise.map((item, index) => (
+            <Card 
+              key={index}
+              className="shadow-professional hover-lift transition-professional bg-card border-border animate-fade-in-up"
+              style={{animationDelay: `${index * 0.2}s`}}
+            >
+              <CardHeader>
+                <div className="flex items-center space-x-4">
+                  <div className="p-3 bg-gradient-primary rounded-lg">
+                    <item.icon className="h-6 w-6 text-primary-foreground" />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-foreground">Dr. SPSS Uzmanı</h3>
-                    <p className="text-muted-foreground">İstatistiksel Veri Analizi Uzmanı</p>
+                    <CardTitle className="text-xl text-gradient-primary">{item.title}</CardTitle>
+                    <CardDescription className="text-muted-foreground">{item.description}</CardDescription>
                   </div>
                 </div>
-                
-                <p className="text-muted-foreground leading-relaxed mb-6">
-                  7 yılı aşkın deneyimle, sosyal bilimlerden sağlığa, eğitimden iş dünyasına kadar 
-                  geniş bir yelpazede SPSS analizi hizmeti sunuyorum. Akademik geçmişim ve pratik 
-                  deneyimimle, karmaşık veri setlerini anlamlı sonuçlara dönüştürme konusunda 
-                  uzmanlaştım.
-                </p>
-
-                <p className="text-muted-foreground leading-relaxed">
-                  Her proje benim için benzersizdir ve müşterilerimin ihtiyaçlarına göre özelleştirilmiş 
-                  çözümler sunarım. Kaliteli, hızlı ve güvenilir analiz sonuçları ile araştırmanızın 
-                  başarıya ulaşması için buradayım.
-                </p>
-              </CardContent>
-            </Card>
-
-            {/* Stats */}
-            <div className="grid grid-cols-2 gap-4">
-              {stats.map((stat, index) => (
-                <Card key={index} className="p-6 text-center hover-lift shadow-card bg-card border-border">
-                  <CardContent className="p-0">
-                    <div className="p-3 bg-gradient-accent rounded-full w-fit mx-auto mb-4">
-                      <stat.icon className="h-6 w-6 text-accent-foreground" />
-                    </div>
-                    <h4 className="text-2xl font-bold text-foreground mb-1">{stat.number}</h4>
-                    <p className="text-sm text-muted-foreground">{stat.label}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-
-          {/* Right Column - Expertise & Advantages */}
-          <div className="space-y-8">
-            {/* Expertise */}
-            <Card className="p-8 shadow-professional bg-card border-border">
-              <CardContent className="p-0">
-                <h3 className="text-2xl font-bold text-gradient-primary mb-6">
-                  Uzmanlık Alanlarım
-                </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {expertise.map((skill, index) => (
-                    <Badge 
-                      key={index} 
-                      variant="secondary" 
-                      className="p-3 justify-start text-sm bg-secondary text-secondary-foreground"
-                    >
-                      {skill}
-                    </Badge>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2">
+                  {item.details.map((detail, detailIndex) => (
+                    <li key={detailIndex} className="flex items-start space-x-2">
+                      <CheckCircle className="h-4 w-4 text-success mt-0.5 flex-shrink-0" />
+                      <span className="text-sm text-muted-foreground">{detail}</span>
+                    </li>
                   ))}
-                </div>
+                </ul>
               </CardContent>
             </Card>
+          ))}
+        </div>
 
-            {/* Advantages */}
-            <div className="space-y-4">
-              <h3 className="text-2xl font-bold text-gradient-primary">
-                Neden Beni Seçmelisiniz?
-              </h3>
-              {advantages.map((advantage, index) => (
-                <Card key={index} className="p-6 hover-lift shadow-card bg-card border-border">
-                  <CardContent className="p-0">
-                    <div className="flex items-start space-x-4">
-                      <div className="p-2 bg-gradient-primary rounded-lg flex-shrink-0">
-                        <advantage.icon className="h-6 w-6 text-primary-foreground" />
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-foreground mb-2">{advantage.title}</h4>
-                        <p className="text-sm text-muted-foreground">{advantage.description}</p>
+        {/* Services Highlight */}
+        <div className="mb-16 animate-fade-in-up">
+          <div className="text-center mb-12">
+            <h3 className="text-3xl font-bold text-gradient-primary mb-4">
+               Neden Bizi Seçmelisiniz?
+             </h3>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Profesyonel yaklaşımımız, teknik uzmanlığımız ve müşteri odaklı hizmet anlayışımızla fark yaratıyoruz.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {services.map((service, index) => (
+              <Card 
+                key={index}
+                className="shadow-professional hover-lift transition-professional bg-card border-border animate-scale-in"
+                style={{animationDelay: `${index * 0.1}s`}}
+              >
+                <CardContent className="p-6">
+                  <div className="flex items-start space-x-4">
+                    <div className="p-3 bg-gradient-primary rounded-full flex-shrink-0">
+                      <service.icon className="h-6 w-6 text-primary-foreground" />
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-xl font-semibold text-gradient-primary mb-2">{service.title}</h4>
+                      <p className="text-muted-foreground mb-3">{service.description}</p>
+                      <div className="flex flex-wrap gap-2">
+                        {service.features.map((feature, featureIndex) => (
+                          <span key={featureIndex} className="text-sm text-muted-foreground bg-muted px-2 py-1 rounded">
+                            {feature}
+                          </span>
+                        ))}
                       </div>
                     </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
+
+
+
+
       </div>
     </section>
   );
